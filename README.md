@@ -1,8 +1,9 @@
-# Automatic set the correct DNS on WSL startup when using eduroam
+# Automatic set the correct DNS on WSL startup when using eduroam or Cisco AnyConnect
 
-DNS resolution times out on WSL2 Windows 10 when connected to eduroam. To fix it you can manually change the internal WSL DNS (/etc/resolv.conf) to match the current DNS from ipconfig. This is simply a script that automates that process plus some more.
+## The problem and the manual fix
+DNS resolution times out on WSL2 Windows 10 when connected to eduroam. To fix it you can manually change the internal WSL DNS (/etc/resolv.conf) to match the current DNS from ipconfig. The same problem happens if using Cisco AnyConnect.
 
-## What it does
+## What the script does
 It checks if you are connected to eduroam, Cisco AnyConnect or neither. It then sets the correct DNS for the given situation. 
 
 ## Recommended usage
@@ -23,3 +24,6 @@ It checks if you are connected to eduroam, Cisco AnyConnect or neither. It then 
   ``` 
 
 After these steps, the script should automatically run on startup without having to type your sudo password.
+
+## A note for using Cisco AnyConnect
+In addition to the rewriting of the internal DNS that this script performs, another fix is needed when using Cisco AnyConnect. After connecting you should set the interface metric to be above 5256 in Windows. Follows [this guide](https://riowingwp.wordpress.com/2020/12/13/anyconnect-bug/). I am not sure if there is a more automated fix for this.
