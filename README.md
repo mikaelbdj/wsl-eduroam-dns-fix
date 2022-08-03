@@ -1,5 +1,5 @@
 # Automatic set the correct DNS on WSL startup when using eduroam or Cisco AnyConnect
-
+**Warning:** This script overwrites your current /etc/resolv.conf file.
 ## The problem and the manual fix
 DNS resolution times out on WSL2 Windows 10 when connected to eduroam. To fix it you can manually change the internal WSL DNS (/etc/resolv.conf) to match the current DNS from ipconfig. The same problem happens if using Cisco AnyConnect.
 
