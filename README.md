@@ -7,12 +7,12 @@ It checks if you are connected to eduroam, Cisco AnyConnect or neither. It then 
 
 ## Recommended usage
 - Put the script somewhere
-- Add it to your .bashrc to run it at startup (The script does nothing if it is not on WSL, so it is safe to add to a general .bashrc)
+- Add it to your .bashrc to run it at startup (The script does nothing if it is not on WSL, so it is safe to add to a general .bashrc)  
   Add to .bashrc:
   ```
   /path/to/repository/wsl-automatic-dns.sh
   ```
-- Optionally, edit sudoers so you don't need to type your password everytime:
+- Optionally, edit sudoers so you don't need to type your password everytime:  
   In WSL type:
   ```
   sudo visudo
