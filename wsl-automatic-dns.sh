@@ -13,11 +13,8 @@ change_dns () {
 
 # Makes sure that it is running in WSL
 if grep -qi microsoft /proc/version; then
-   if $(powershell.exe ipconfig /all | grep -q "Cisco AnyConnect"); then
-      DNS=$(powershell.exe ipconfig /all | grep -i "DNS Servers" | head -1 | awk '{print $15}')
-      change_dns $DNS
-   elif $(powershell.exe ipconfig /all | grep -q "eduroam"); then
-      DNS=$(powershell.exe ipconfig /all | grep -i "DNS Servers" | tail  -1 | awk '{print $15}')
+   if $(powershell.exe ipconfig /all | grep -q "Cisco AnyConnect") || $(powershell.exe ipconfig /all | grep -q "eduroam"); then
+      DNS=$(powershell.exe Get-DnsClientServerAddress | grep "Wi-Fi" | head -1 | awk '{print substr($4,2,13)}')
       change_dns $DNS
    else
       change_dns $default_dns
